@@ -104,7 +104,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
         })
         // In production, upload to Supabase Storage or cloud storage
         // For now, we'll store the review without audio URL
-        toast.info('Audio review feature coming soon!')
+        toast('Audio review feature coming soon!')
       }
 
       const { error } = await supabase.from('reviews').insert([
