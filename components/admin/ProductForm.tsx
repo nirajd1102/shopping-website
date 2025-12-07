@@ -45,6 +45,33 @@ interface ProductFormProps {
   onClose: () => void
 }
 
+// Helper function to normalize Product to ProductFormData
+const normalizeProduct = (product: Product | null): ProductFormData => {
+  if (!product) {
+    return {
+      name: '',
+      description: undefined,
+      price: 0,
+      original_price: null,
+      category_id: null,
+      stock_quantity: 0,
+      is_active: true,
+      is_trending: false,
+    }
+  }
+  
+  return {
+    name: product.name,
+    description: product.description ?? undefined, // Convert null to undefined
+    price: product.price,
+    original_price: product.original_price,
+    category_id: product.category_id,
+    stock_quantity: product.stock_quantity,
+    is_active: product.is_active,
+    is_trending: product.is_trending,
+  }
+}
+
 export default function ProductForm({ product, categories, onClose }: ProductFormProps) {
   const [imageUrls, setImageUrls] = useState<string[]>(product?.image_urls || [])
   const [availableSizes, setAvailableSizes] = useState<string[]>(
@@ -67,16 +94,7 @@ export default function ProductForm({ product, categories, onClose }: ProductFor
     watch,
   } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: product || {
-      name: '',
-      description: '',
-      price: 0,
-      original_price: null,
-      category_id: null,
-      stock_quantity: 0,
-      is_active: true,
-      is_trending: false,
-    },
+    defaultValues: normalizeProduct(product),
   })
 
   const handleImageUrlAdd = () => {
@@ -466,4 +484,6 @@ export default function ProductForm({ product, categories, onClose }: ProductFor
     </div>
   )
 }
+
+
 
