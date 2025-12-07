@@ -1,0 +1,29 @@
+===========================================
+QUICK FIX FOR ADMIN PAGE NOT LOADING
+===========================================
+
+1. Create file: .env.local (in project root)
+
+2. Copy this content:
+
+NEXT_PUBLIC_SUPABASE_URL=https://cggvjgpjxqhwpindwuzd.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder_for_now
+SUPABASE_SERVICE_ROLE_KEY=placeholder_for_now
+NEXT_PUBLIC_ADMIN_EMAIL=admin@fashionstore.com
+NEXT_PUBLIC_ADMIN_PASSWORD=admin123
+NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
+
+3. Save the file
+
+4. Restart server:
+   - Press Ctrl+C
+   - Run: npm run dev
+
+5. Go to: http://localhost:3000/admin
+
+6. Login with:
+   Email: admin@fashionstore.com
+   Password: admin123
+
+===========================================
+
