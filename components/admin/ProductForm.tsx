@@ -379,7 +379,7 @@ export default function ProductForm({ product, categories, onClose }: ProductFor
               onBlur={(e) => {
                 if (e.target.value) {
                   const customSizes = e.target.value.split(',').map(s => s.trim()).filter(s => s)
-                  setAvailableSizes([...new Set([...availableSizes, ...customSizes])])
+                  setAvailableSizes(Array.from(new Set([...availableSizes, ...customSizes])))
                   e.target.value = ''
                 }
               }}
@@ -427,7 +427,7 @@ export default function ProductForm({ product, categories, onClose }: ProductFor
               onBlur={(e) => {
                 if (e.target.value) {
                   const customColors = e.target.value.split(',').map(c => c.trim()).filter(c => c)
-                  setAvailableColors([...new Set([...availableColors, ...customColors])])
+                  setAvailableColors(Array.from(new Set([...availableColors, ...customColors])))
                   e.target.value = ''
                 }
               }}
@@ -484,6 +484,8 @@ export default function ProductForm({ product, categories, onClose }: ProductFor
     </div>
   )
 }
+
+
 
 
 
